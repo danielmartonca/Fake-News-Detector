@@ -1,0 +1,82 @@
+﻿{
+  "TrainingTime": 600,
+  "Scenario": "Classification",
+  "DataSource": {
+    "Type": "TabularFile",
+    "Version": 1,
+    "FilePath": "E:\\Info\\FACULTATE\\ANUL_3\\dotNET\\PROIECT\\Fake News Detector\\Fake News Detector\\Application\\ML_data\\train.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "id",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "title",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "author",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "text",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "label",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 1
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 0,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "SdcaMaximumEntropyMulti",
+        "Score": 0.97259323503902861,
+        "RuntimeInSeconds": 14.083999633789063
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "FastForestOva",
+        "Score": 0.98820468343451862,
+        "RuntimeInSeconds": 83.382003784179688
+      }
+    ],
+    "Pipeline": "[{\"EstimatorType\":\"ReplaceMissingValues\",\"Inputs\":[\"id\"],\"Outputs\":[\"id\"]},{\"EstimatorType\":\"FeaturizeText\",\"Inputs\":[\"title\"],\"Outputs\":[\"title\"]},{\"EstimatorType\":\"FeaturizeText\",\"Inputs\":[\"author\"],\"Outputs\":[\"author\"]},{\"EstimatorType\":\"FeaturizeText\",\"Inputs\":[\"text\"],\"Outputs\":[\"text\"]},{\"EstimatorType\":\"Concatenate\",\"Inputs\":[\"id\",\"title\",\"author\",\"text\"],\"Outputs\":[\"Features\"]},{\"EstimatorType\":\"MapValueToKey\",\"Inputs\":[\"label\"],\"Outputs\":[\"label\"]},{\"LabelColumnName\":\"label\",\"FeatureColumnName\":\"Features\",\"NumberOfTrees\":\"4\",\"FeatureFraction\":\"1\",\"EstimatorType\":\"FastForestOva\",\"Inputs\":[\"label\"],\"Outputs\":[\"Features\"]},{\"EstimatorType\":\"MapKeyToValue\",\"Inputs\":[\"PredictedLabel\"],\"Outputs\":[\"PredictedLabel\"]}]",
+    "MetricName": "MicroAccuracy"
+  },
+  "Type": "TrainingConfig",
+  "Version": 1
+}
