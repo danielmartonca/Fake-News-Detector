@@ -74,6 +74,7 @@ export default function Header() {
                     alert(response.data);
                     deleteCookie("sessionID");
                     deleteCookie("username");
+                    window.localStorage.setItem("userLogged", "false")
                     break;
                 }
                 default: {
@@ -130,8 +131,16 @@ export default function Header() {
         });
     }
 
+    const logout = () => {
+        window.localStorage.setItem("userLogged", "false");
+        deleteCookie("sessionID");
+        deleteCookie("username");
+    }
+
     const loginForm = () => {
-        if (checkSessionIDCookie() === false)
+        var userIsLogged = window.localStorage.getItem("userLogged");
+
+        if (userIsLogged === "false")
             return < form className="navbar-nav float-left" onSubmit={onSubmit}>
                 <input className="form-control me-2"
                     type="text"
@@ -143,7 +152,27 @@ export default function Header() {
                     onChange={(e) => { setPassword(e.target.value); }} />
                 <button className="btn btn-success" type="submit" >Login</button>
             </form>
+        else {
+            return <button className="btn btn-success" type="submit" onClick={logout}>Logout</button>
+        }
     }
+
+    const checkIfUserIsLogged = () => {
+        var userIsLogged = window.localStorage.getItem("userLogged");
+
+        if (userIsLogged === null)
+            window.localStorage.setItem("userLogged", "false");
+
+        if (userIsLogged === "false") {
+            deleteCookie("sessionID");
+            deleteCookie("username");
+        }
+        else
+            if (checkSessionIDCookie() === true)
+                window.localStorage.setItem("userLogged", "true");
+    }
+
+    checkIfUserIsLogged();
 
     return (
         <div >
