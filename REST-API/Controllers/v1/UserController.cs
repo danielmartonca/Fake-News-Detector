@@ -72,9 +72,6 @@ namespace REST_API.Controllers.v1
         [Route("sessionID")]
         public async Task<IActionResult> SessionID([FromBody] UserSession userSession)
         {
-            System.Console.WriteLine(userSession.Username);
-            System.Console.WriteLine(userSession.SessionId);
-
             _logger.LogDebug($"POST\nSessionID check attempt:\nusername:{userSession.Username}\nsessionID:{userSession.SessionId}\n");
 
             _logger.LogDebug($"Attempting to check SessionID '{userSession.SessionId}' for user {userSession.Username}");
@@ -82,8 +79,22 @@ namespace REST_API.Controllers.v1
             var UserSession = await Mediator.Send(new GetUserSessionBySessionIdAndUsernameQuery(userSession));
             if (UserSession != null)
                 return Ok();
-            
+
             return Unauthorized("Invalid session id");
+        }
+        [HttpDelete]
+        [Route("sessionID")]
+        public async Task<IActionResult> DeleteSessionID([FromBody] UserSession userSession)
+        {
+            _logger.LogDebug($"POST\nSessionID delete :\nusername:{userSession.Username}\nsessionID:{userSession.SessionId}\n");
+
+            _logger.LogDebug($"Deleting SessionID '{userSession.SessionId}' for user {userSession.Username}");
+
+            var result = await Mediator.Send(new DeleteSessionIdQuery(userSession));
+            if (result.ToString() == "true")
+                return Ok();
+
+            return BadRequest("Invalid user session sent");
         }
     }
 }

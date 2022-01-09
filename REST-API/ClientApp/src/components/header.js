@@ -132,9 +132,37 @@ export default function Header() {
     }
 
     const logout = () => {
-        window.localStorage.setItem("userLogged", "false");
-        deleteCookie("sessionID");
-        deleteCookie("username");
+        if (username != null & sessionID != null)
+            await axios.delete("/api/1/User/sessionID", {
+                ID: sessionID,
+                Username: username,
+                SessionId: sessionID
+            }).then((response) => {
+                switch (response.status) {
+                    case 200: {//OK
+                        window.localStorage.setItem("userLogged", "false");
+                        deleteCookie("sessionID");
+                        deleteCookie("username");
+                        break;
+                    }
+                    default: {
+                        alert("UNKNOWN RESPONSE STATUS");
+                    }
+                }
+            }).catch((response) => {
+                switch (response.status) {
+                    case 400: {//BAD REQUEST
+                        console.log(response.data);
+                        window.localStorage.setItem("userLogged", "false");
+                        deleteCookie("sessionID");
+                        deleteCookie("username");
+                        break;
+                    }
+                    default: {
+                        alert("UNKNOWN RESPONSE STATUS");
+                    }
+                }
+            })
     }
 
     const loginForm = () => {

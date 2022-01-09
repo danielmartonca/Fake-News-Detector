@@ -20,7 +20,7 @@ namespace Persistence.v1
         public async Task<UserSession> GetBySessionId(Guid sessionId)
         {
             if (sessionId == Guid.Empty)
-               throw new ArgumentNullException($"sessionId {nameof(sessionId)} cannot be null");
+                throw new ArgumentNullException($"sessionId {nameof(sessionId)} cannot be null");
             return await _context.UserSessions.Where(u => u.SessionId == sessionId).FirstOrDefaultAsync();
         }
 
@@ -29,6 +29,18 @@ namespace Persistence.v1
             if (username == string.Empty)
                 throw new ArgumentNullException($"username {nameof(username)} cannot be null");
             return await _context.UserSessions.Where(u => u.Username == username).FirstOrDefaultAsync();
+        }
+        public async Task<bool> DeleteByUserSession(UserSession userSession)
+        {
+            if (userSession == null)
+                throw new ArgumentNullException("UserSession object must not be null");
+
+            var result = await _context.UserSessions.Where(u => u.SessionId == userSession.SessionId && u.Username == userSession.Username).FirstOrDefaultAsync();
+            if (result == null)
+                return false;
+            _context.UserSessions.Remove(result);
+
+            return true;
         }
     }
 }
