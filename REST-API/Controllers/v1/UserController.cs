@@ -91,10 +91,11 @@ namespace REST_API.Controllers.v1
             _logger.LogDebug($"Deleting SessionID '{userSession.SessionId}' for user {userSession.Username}");
 
             var result = await Mediator.Send(new DeleteSessionIdQuery(userSession));
-            if (result.ToString() == "true")
-                return Ok();
+            if (result == null)
+                return BadRequest("Invalid user session sent");
 
-            return BadRequest("Invalid user session sent");
+            return Ok();
+
         }
     }
 }

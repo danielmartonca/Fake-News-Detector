@@ -8,6 +8,6 @@ namespace Application.Interfaces
     {
         public Task<UserSession> GetByUsername(string username);
         public Task<UserSession> GetBySessionId(Guid sessionId);
-        public Task<bool> DeleteByUserSession(UserSession userSession);
+        public Task<UserSession> DeleteByUserSession(UserSession userSession);
     }
 }

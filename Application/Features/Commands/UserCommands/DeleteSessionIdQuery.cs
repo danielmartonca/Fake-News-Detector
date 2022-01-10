@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Features.Commands.UserCommands
 {
-    public class DeleteSessionIdQuery
+    public class DeleteSessionIdQuery : IRequest<UserSession>
     {
 
         public UserSession userSession { get; set; }

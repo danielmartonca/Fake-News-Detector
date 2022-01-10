@@ -30,17 +30,17 @@ namespace Persistence.v1
                 throw new ArgumentNullException($"username {nameof(username)} cannot be null");
             return await _context.UserSessions.Where(u => u.Username == username).FirstOrDefaultAsync();
         }
-        public async Task<bool> DeleteByUserSession(UserSession userSession)
+        public async Task<UserSession> DeleteByUserSession(UserSession userSession)
         {
             if (userSession == null)
                 throw new ArgumentNullException("UserSession object must not be null");
 
             var result = await _context.UserSessions.Where(u => u.SessionId == userSession.SessionId && u.Username == userSession.Username).FirstOrDefaultAsync();
             if (result == null)
-                return false;
+                return null;
             _context.UserSessions.Remove(result);
 
-            return true;
+            return result;
         }
     }
 }

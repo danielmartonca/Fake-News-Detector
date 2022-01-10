@@ -111,6 +111,7 @@ export default function Header() {
                     deleteCookie("username")
                     setCookie("sessionID", sessionID, 10);
                     setCookie("username", username, 10);
+                    window.localStorage.setItem("userLogged", "true");
                     window.location.reload();
                     break;
                 }
@@ -132,17 +133,22 @@ export default function Header() {
     }
 
     const logout = () => {
+        let sessionID = getCookie("sessionID");
+        let username = getCookie("username");
         if (username != null & sessionID != null)
-            await axios.delete("/api/1/User/sessionID", {
+            axios.delete("/api/1/User/sessionID", {
+                data:{
                 ID: sessionID,
                 Username: username,
                 SessionId: sessionID
+                }
             }).then((response) => {
                 switch (response.status) {
                     case 200: {//OK
                         window.localStorage.setItem("userLogged", "false");
                         deleteCookie("sessionID");
                         deleteCookie("username");
+                        window.location.reload();
                         break;
                     }
                     default: {
