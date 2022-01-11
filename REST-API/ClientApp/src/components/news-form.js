@@ -20,13 +20,13 @@ const NewsForm = () => {
     const onSubmit = async (event, value) => {
         event.preventDefault();
         if (isInputValid()) {
-            const response = await axios.post("/api/1/News", {
+            const rsp = await axios.post("/api/1/News", {
                 Title: title,
                 Author: author,
                 Text: text,
                 Date: date
             });
-            setResponse(response.data);
+            setResponse(rsp.data);
         }
         else
             setResponse("Invalid input! Check your fields again.");

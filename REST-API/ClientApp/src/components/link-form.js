@@ -20,10 +20,10 @@ const LinkNewsForm = () => {
     const onSubmit = async (event, value) => {
         event.preventDefault();
         if (isValidHttpUrl(inputURL)) {
-            const response = await axios.post("/api/1/News/link", {
+            const rsp = await axios.post("/api/1/News/link", {
                 InputURL: inputURL
             });
-            setResponse(response.data);
+            setResponse(rsp.data);
         }
         else
             setResponse("Your URL is invalid.");

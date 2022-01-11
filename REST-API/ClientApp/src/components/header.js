@@ -135,7 +135,7 @@ export default function Header() {
     const logout = () => {
         let sessionID = getCookie("sessionID");
         let username = getCookie("username");
-        if (username != null & sessionID != null)
+        if (username != null && sessionID != null)
             axios.delete("/api/1/User/sessionID", {
                 data:{
                 ID: sessionID,

@@ -18,7 +18,7 @@ const RegisterForm = () => {
 
     const onSubmit = async (event, value) => {
         event.preventDefault();
-        const response = await axios.put("/api/1/User/create",{
+        await axios.put("/api/1/User/create",{
             Username: username,
             Email: email,
             Password: password,

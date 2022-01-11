@@ -26,14 +26,14 @@ namespace Persistence.v1
             return entity;
         }
 
-        public async Task<TEntity> GetByIdAsync(Guid id)
+        public async Task<TEntity> GetByIdAsync(Guid ID)
         {
-            if (id == Guid.Empty)
+            if (ID == Guid.Empty)
             {
                 throw new ArgumentException($"{nameof(GetByIdAsync)} id must not be empty");
             }
 
-            return await _context.FindAsync<TEntity>(id);
+            return await _context.FindAsync<TEntity>(ID);
         }
     }
 }
