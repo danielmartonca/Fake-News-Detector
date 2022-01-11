@@ -10,7 +10,7 @@ namespace Infrastructure.Tests.Core.Application.Queries
     public class QueryNews
     {
         [Fact]
-        public void CreateNews()
+        public void GivenNewsWhenCheckIfIsValidThenObtainResult()
         {
             var news = new News("Test2", "Test2", "Test2", DateTime.Today);
             var mediator = new Mock<IMediator>();

@@ -3,42 +3,42 @@
     assert.equal(result, 3);
 });
 
-QUnit.test("Web Test", function (assert) {
+QUnit.test("GivenHttpUrlWhenValidObtainTrue", function (assert) {
     var result = isValidHttpUrl("https://www.google.com/");
     assert.equal(result, true);
 });
 
-QUnit.test("Web Test2", function (assert) {
+QUnit.test("GivenHttpUrlWhenInvalidThenObtainFalse", function (assert) {
     var result = isValidHttpUrl("httpd://www.mmediu.ro/");
     assert.equal(result, false);
 });
 
-QUnit.test("Web Test3", function (assert) {
+QUnit.test("GivenCookieWhenLoggedThenObtainNull", function (assert) {
     var result = getCookie("userLogged");
     assert.equal(result, null);
 });
 
-QUnit.test("Web Test4", function (assert) {
+QUnit.test("GivenNewsDataWhenIsInvalidThenObtainFalse", function (assert) {
     var result = isInputValid("Test", null, "Test3", "Test4");
     assert.equal(result, false);
 });
 
-QUnit.test("Web Test5", function (assert) {
+QUnit.test("GivenNewsDataWhenIsValidThenObtainTrue", function (assert) {
     var result = isInputValid("Test", "Test2", "Test3", "Test4");
     assert.equal(result, true);
 });
 
-QUnit.test("Web Test6", function (assert) {
+QUnit.test("GivenUserCookieWhenIsNullThenObtainFalse", function (assert) {
     var result = checkIfUserIsLogged(null);
     assert.equal(result, false);
 });
 
-QUnit.test("Web Test7", function (assert) {
+QUnit.test("GivenUserCookieWhenIsFalseThenObtainFalse", function (assert) {
     var result = checkIfUserIsLogged("false");
     assert.equal(result, false);
 });
 
-QUnit.test("Web Test8", function (assert) {
+QUnit.test("GivenUserCookieWhenIsTrueThenObtainTrue", function (assert) {
     var result = checkIfUserIsLogged("true");
     assert.equal(result, true);
 });

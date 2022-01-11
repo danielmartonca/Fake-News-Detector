@@ -10,7 +10,7 @@ namespace Infrastructure.Tests.Core.Application.Queries
     public class Predict
     {
         [Fact]
-        public void PredictNewsNow()
+        public void GivenNewsWhenCheckPredictionThenObtainResult()
         {
             var news = new News("Test2", "Test2", "Test2", DateTime.Today);
             var mediator = new Mock<Mediator>();

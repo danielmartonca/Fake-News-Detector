@@ -8,8 +8,8 @@ namespace Infrastructure.Tests.Rest
 {
     public class PutRequests
     {
-        [Fact]
-        public void CreateAccount(){
+        [Fact] 
+        public void GivenUserNewAccountCredentialsWhenCheckForConfirmationObtainResult(){
             using (var client = new HttpClient())
             {
                 User u = new User();
@@ -23,7 +23,7 @@ namespace Infrastructure.Tests.Rest
         }
 
         [Fact]
-        public void AddNews()
+        public void GivenNewsWhenTryToAddNewsObtainResult()
         {
             using (var client = new HttpClient())
             {

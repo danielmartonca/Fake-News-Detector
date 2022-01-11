@@ -8,7 +8,7 @@ namespace Infrastructure.Tests.Core
     public class Scrapper
     {
         [Fact]
-        public void TitleGetNewsFromUrl()
+        public void GivenNewsTitleWhenCheckedFromUrlThenVerifyEquality()
         {
             String str = "https://www.digi24.ro/stiri/externe/rusia/video-aterizare-cu-emotii-in-rusia-o-aeronava-a-iesit-de-pe-pista-din-cauza-ghetii-1798273";
             News n = WebScrapper.GetNewsFromUrl(str);
@@ -16,7 +16,7 @@ namespace Infrastructure.Tests.Core
         }
 
         [Fact]
-        public void AuthorGetNewsFromUrl()
+        public void GivenNewsAuthorWhenCheckedFromUrlThenVerifyEquality()
         {
             String str = "https://www.digi24.ro/stiri/externe/rusia/video-aterizare-cu-emotii-in-rusia-o-aeronava-a-iesit-de-pe-pista-din-cauza-ghetii-1798273";
             News n = WebScrapper.GetNewsFromUrl(str);
@@ -24,7 +24,7 @@ namespace Infrastructure.Tests.Core
         }
 
         [Fact]
-        public void TextGetNewsFromUrl()
+        public void GivenNewsContentWhenCheckedFromUrlThenVerifyEquality()
         {
             String str = "https://www.digi24.ro/stiri/externe/rusia/video-aterizare-cu-emotii-in-rusia-o-aeronava-a-iesit-de-pe-pista-din-cauza-ghetii-1798273";
             News n = WebScrapper.GetNewsFromUrl(str);

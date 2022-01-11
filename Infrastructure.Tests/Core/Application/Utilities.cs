@@ -7,8 +7,8 @@ namespace Infrastructure.Tests.Core
 {
     public class Utilities
     {
-        [Fact]
-        public void ValidateUserCredentials()
+        [Fact] 
+        public void GivenUserCredentialsWhenCheckValidityThenObtainTrue()
         {
             var user = new User();
             user.Username = "test";
