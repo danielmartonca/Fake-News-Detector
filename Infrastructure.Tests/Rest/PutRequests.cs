@@ -16,9 +16,9 @@ namespace Infrastructure.Tests.Rest
                 u.Username = "User";
                 u.Email = "user@gmail.com";
                 u.Password = "Pass";
-                //client.BaseAddress = new Uri("http://localhost:5001/");
-                //var response = client.PutAsJsonAsync("api/1/User/create", u).Result;
-                //Assert.True(response.IsSuccessStatusCode);
+                client.BaseAddress = new Uri("http://localhost:5001/");
+                var response = client.PutAsJsonAsync("api/1/User/create", u).Result;
+                Assert.True(response.IsSuccessStatusCode);
             }
         }
 
@@ -28,9 +28,9 @@ namespace Infrastructure.Tests.Rest
             using (var client = new HttpClient())
             {
                 News n = new News("Title", "Text", "Author", DateTime.Now);
-                //client.BaseAddress = new Uri("http://localhost:5001/");
-                //var response = client.PutAsJsonAsync("api/1/News", n).Result;
-                //Assert.True(response.IsSuccessStatusCode);
+                client.BaseAddress = new Uri("http://localhost:5001/");
+                var response = client.PutAsJsonAsync("api/1/News", n).Result;
+                Assert.True(response.IsSuccessStatusCode);
             }
         }
     }
