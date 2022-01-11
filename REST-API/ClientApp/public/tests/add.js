@@ -28,3 +28,32 @@ function getCookie(cookieName) {
     }
     return null;
 }
+
+function isInputValid(title, author, date, text) {
+    if (title == null || author == null || date == null || text == null)
+        return false;
+    if (typeof (title) != 'string' || typeof (author) != 'string' || typeof (text) != 'string')
+        return false;
+    if (date.localeCompare(" ") === 0) return false;
+    return true;
+}
+
+function checkIfUserIsLogged (isLogged) {
+    var userIsLogged = isLogged;
+
+    if (userIsLogged === null) {
+        //window.localStorage.setItem("userLogged", "false");
+        return false;
+    }
+
+    if (userIsLogged === "false") {
+        //deleteCookie("sessionID");
+        //deleteCookie("username");
+        return false;
+    }
+    else
+        if (userIsLogged === "true") {
+            //window.localStorage.setItem("userLogged", "true");
+            return true;
+        }
+}

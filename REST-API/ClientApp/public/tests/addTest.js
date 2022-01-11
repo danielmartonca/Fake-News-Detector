@@ -17,3 +17,28 @@ QUnit.test("Web Test3", function (assert) {
     var result = getCookie("userLogged");
     assert.equal(result, null);
 });
+
+QUnit.test("Web Test4", function (assert) {
+    var result = isInputValid("Test", null, "Test3", "Test4");
+    assert.equal(result, false);
+});
+
+QUnit.test("Web Test5", function (assert) {
+    var result = isInputValid("Test", "Test2", "Test3", "Test4");
+    assert.equal(result, true);
+});
+
+QUnit.test("Web Test6", function (assert) {
+    var result = checkIfUserIsLogged(null);
+    assert.equal(result, false);
+});
+
+QUnit.test("Web Test7", function (assert) {
+    var result = checkIfUserIsLogged("false");
+    assert.equal(result, false);
+});
+
+QUnit.test("Web Test8", function (assert) {
+    var result = checkIfUserIsLogged("true");
+    assert.equal(result, true);
+});
