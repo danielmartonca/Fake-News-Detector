@@ -10,7 +10,7 @@ namespace Infrastructure.Tests.Rest
     public class PostRequests
     {
         [Fact]
-        public async Task LoginValidateCredentials()
+        public async Task GivenUserCredentialsWhenValidateObtainResult()
         {
             var values = new Dictionary<string, string>
 {
@@ -32,8 +32,8 @@ namespace Infrastructure.Tests.Rest
 
         }
 
-        [Fact]
-        public async Task VerifyInvalidSessionID()
+        [Fact] 
+        public async Task GivenInvalidSessionIdWhenCheckForValidityObtainResult()
         {
             var values = new Dictionary<string, string>
 {
@@ -53,8 +53,9 @@ namespace Infrastructure.Tests.Rest
             Assert.Equal("Invalid session id", result);
 
         }
+
     [Fact]
-    public async Task VerifyValidSessionID()
+    public async Task GivenValidSessionIdWhenCheckForValidityObtainResult()
     {
         var values = new Dictionary<string, string>
 {
@@ -76,7 +77,7 @@ namespace Infrastructure.Tests.Rest
     }
 
         [Fact]
-        public async Task VerifyPredict()
+        public async Task GivenFakeNewsWhenCheckForRealObtainResult()
         {
             var values = new Dictionary<string, string>
 {
@@ -99,7 +100,7 @@ namespace Infrastructure.Tests.Rest
         }
 
         [Fact]
-        public async Task VerifyLink()
+        public async Task GivenFakeNewsByLinkWhenCheckForRealObtainResult()
         {
             var values = new Dictionary<string, string>
 {

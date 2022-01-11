@@ -9,8 +9,8 @@ namespace Infrastructure.Tests.Core.Application.Queries
 {
     public class QueryUser
     {
-        [Fact]
-        public void Deleteid()
+        [Fact] 
+        public void GivenUserSessionIdWhenCheckIfIsNullThenObtainResult()
         {
             var ses = new UserSession();
             var mediator = new Mock<Mediator>();

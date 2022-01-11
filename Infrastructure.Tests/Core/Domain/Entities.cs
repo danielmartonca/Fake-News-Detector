@@ -7,7 +7,7 @@ namespace Infrastructure.Tests.Core.Domain
     public class Entities
     {
         [Fact]
-        public void News()
+        public void GivenNewsEntityWhenCheckForEqualityThenObtainResult()
         {
             News n = new("Title", "Text", "Author", DateTime.Now);
             Assert.Equal("Title", n.Title);
@@ -16,7 +16,7 @@ namespace Infrastructure.Tests.Core.Domain
         }
 
         [Fact]
-        public void UrlLink()
+        public void GivenUrlLinkEntityWhenCheckForEqualityThenObtainResult()
         {
             String str = "https://www.digi24.ro/stiri/externe/rusia/video-aterizare-cu-emotii-in-rusia-o-aeronava-a-iesit-de-pe-pista-din-cauza-ghetii-1798273";
             UrlLink link = new(str);
