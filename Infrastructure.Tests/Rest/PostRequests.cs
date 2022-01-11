@@ -74,5 +74,48 @@ namespace Infrastructure.Tests.Rest
         Assert.Equal("200", result);
 
     }
-}
+
+        [Fact]
+        public async Task VerifyPredict()
+        {
+            var values = new Dictionary<string, string>
+{
+    { "id", "3fa85f64-5717-4562-b3fc-2c963f66afa6" },
+    { "title", "Andrei a plecat de acasa!" },
+    { "author", "Andrei" },
+    { "date", "2022-01-11T04:28:21.735Z" }
+};
+
+            var data = new FormUrlEncodedContent(values);
+
+            var url = "https://localhost:5001/api/1/News";
+            using var client = new HttpClient();
+
+            var response = await client.PostAsync(url, data);
+
+            string result = response.Content.ReadAsStringAsync().Result;
+            Assert.Equal("False", result);
+
+        }
+
+        [Fact]
+        public async Task VerifyLink()
+        {
+            var values = new Dictionary<string, string>
+{
+    { "inputUrl", "https://www.digi24.ro/stiri/externe/rusia/video-aterizare-cu-emotii-in-rusia-o-aeronava-a-iesit-de-pe-pista-din-cauza-ghetii-1798273" },
+};
+
+            var data = new FormUrlEncodedContent(values);
+
+            var url = "https://localhost:5001/api/1/News/link";
+            using var client = new HttpClient();
+
+            var response = await client.PostAsync(url, data);
+
+            string result = response.Content.ReadAsStringAsync().Result;
+            Assert.Equal("False", result);
+
+        }
+    }
 }

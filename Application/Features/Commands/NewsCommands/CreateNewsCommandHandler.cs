@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Application.Features.Commands
 {
-    public class CreateNewsCommandHandler : IRequestHandler<CreateNewsCommand, News>
+    public class CreateNewsCommandHandler : IRequestHandler<CreateUserCommand, News>
     {
         private readonly INewsRepository _repository;
 
@@ -15,7 +15,7 @@ namespace Application.Features.Commands
             _repository = repository;
         }
 
-        public async Task<News> Handle(CreateNewsCommand request, CancellationToken cancellationToken)
+        public async Task<News> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var news = new News(request.Title, request.Text, request.Author, request.Date);
             await _repository.AddAsync(news);

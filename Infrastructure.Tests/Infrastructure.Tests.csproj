@@ -17,6 +17,8 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="Moq" Version="4.16.1" />
+        <PackageReference Include="Chutzpah" Version="4.4.12" />
     </ItemGroup>
 
     <ItemGroup>
@@ -30,10 +32,20 @@
       <None Remove="Core\" />
       <None Remove="Rest\" />
       <None Remove="Infrastructure\" />
+      <None Remove="Core\Domain\" />
+      <None Remove="Core\Application\" />
+      <None Remove="Core\Application\Queries\" />
+      <None Remove="Core\Application\Commands\" />
+      <None Remove="Moq" />
+      <None Remove="Chutzpah" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Core\" />
       <Folder Include="Rest\" />
       <Folder Include="Infrastructure\" />
+      <Folder Include="Core\Domain\" />
+      <Folder Include="Core\Application\" />
+      <Folder Include="Core\Application\Queries\" />
+      <Folder Include="Core\Application\Commands\" />
     </ItemGroup>
 </Project>

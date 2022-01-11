@@ -36,7 +36,7 @@ namespace REST_API.Controllers.v1
         {
             _logger.LogDebug($"PUT \nID: {news.Id}\ntitle: {news.Title}\ntext: {news.Text}\nauthor: {news.Author}\n");
             _logger.LogDebug("Adding entry to news database.");
-            var result = await Mediator.Send(new CreateNewsCommand(news));
+            var result = await Mediator.Send(new CreateUserCommand(news));
 
             if (result != null)
             {

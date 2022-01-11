@@ -11,6 +11,7 @@
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+        <PackageReference Include="QUnit-MVC" Version="1.6.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,4 +19,12 @@
       <ProjectReference Include="..\Persistence\Persistence.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Chutzpah" />
+      <None Remove="QUnit-MVC" />
+      <None Remove="ClientApp\public\test\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="ClientApp\public\tests\" />
+    </ItemGroup>
 </Project>
